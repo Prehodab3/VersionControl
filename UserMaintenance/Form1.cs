@@ -18,13 +18,24 @@ namespace UserMaintenance
         public Form1()
         {
             InitializeComponent();
-            label1.Text = Resource1.FullName; 
+            label1.Text = Resource1.FullName;
             button1.Click += Button1_Click;
             button2.Click += Button2_Click;
+            button3.Text = Resource1.Delete;
+            button3.Click += Button3_Click;
+            button1.Text = Resource1.Add;
+            button2.Text = Resource1.Write;
 
             listBox1.DataSource = users;
             listBox1.ValueMember = "ID";
             listBox1.DisplayMember = "FullName";
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            var torlendo = (User)listBox1.SelectedItem;
+            users.Remove(torlendo);
+            
         }
 
         private void Button2_Click(object sender, EventArgs e)
